@@ -31,7 +31,7 @@ export const CustomModal: React.FC<ModalProps> = ({open, setOpen, contact, modal
     }
     else if (modalName === 'Добавить') {
       api.post<IBook[]>('/', {name: name.value, number: number.value})
-      .then(res => setContacts(res.data));
+      .then(res => setContacts(res.data.sort((a,b) => +b.id - +a.id)));
     }
     setOpen(false);
   }

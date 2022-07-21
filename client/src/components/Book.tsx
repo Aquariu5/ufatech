@@ -9,7 +9,7 @@ const Book = () => {
     const [contacts, setContacts] = useState<IBook[]>([]);
     useEffect(() => {
         api.get<IBook[]>('/')
-        .then(res => setContacts(res.data));
+        .then(res => setContacts(res.data.sort((a,b) => +b.id - +a.id)));
     }, [])
 
   const [open, setOpen] = useState<boolean>(false);
